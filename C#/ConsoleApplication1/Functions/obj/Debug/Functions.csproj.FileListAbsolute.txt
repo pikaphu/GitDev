@@ -10,3 +10,9 @@ D:\CodeDev\C#\ConsoleApplication1\Functions\bin\Debug\Functions.pdb
 D:\CodeDev\C#\ConsoleApplication1\Functions\obj\Debug\Functions.csprojResolveAssemblyReference.cache
 D:\CodeDev\C#\ConsoleApplication1\Functions\obj\Debug\Functions.exe
 D:\CodeDev\C#\ConsoleApplication1\Functions\obj\Debug\Functions.pdb
+D:\GitDev\C-sharp\GitDev\C#\ConsoleApplication1\Functions\bin\Debug\Functions.exe.config
+D:\GitDev\C-sharp\GitDev\C#\ConsoleApplication1\Functions\obj\Debug\Functions.exe
+D:\GitDev\C-sharp\GitDev\C#\ConsoleApplication1\Functions\obj\Debug\Functions.pdb
+D:\GitDev\C-sharp\GitDev\C#\ConsoleApplication1\Functions\bin\Debug\Functions.exe
+D:\GitDev\C-sharp\GitDev\C#\ConsoleApplication1\Functions\bin\Debug\Functions.pdb
+D:\GitDev\C-sharp\GitDev\C#\ConsoleApplication1\Functions\obj\Debug\Functions.csprojResolveAssemblyReference.cache

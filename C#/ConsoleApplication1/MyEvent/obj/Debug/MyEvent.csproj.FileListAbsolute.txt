@@ -7,3 +7,6 @@ D:\CodeDev\C#\ConsoleApplication1\MyEvent\obj\Debug\MyEvent.pdb
 D:\GitDev\C-sharp\GitDev\C#\ConsoleApplication1\MyEvent\bin\Debug\MyEvent.exe.config
 D:\GitDev\C-sharp\GitDev\C#\ConsoleApplication1\MyEvent\obj\Debug\MyEvent.exe
 D:\GitDev\C-sharp\GitDev\C#\ConsoleApplication1\MyEvent\obj\Debug\MyEvent.pdb
+D:\GitDev\C-sharp\GitDev\C#\ConsoleApplication1\MyEvent\bin\Debug\MyEvent.exe
+D:\GitDev\C-sharp\GitDev\C#\ConsoleApplication1\MyEvent\bin\Debug\MyEvent.pdb
+D:\GitDev\C-sharp\GitDev\C#\ConsoleApplication1\MyEvent\obj\Debug\MyEvent.csprojResolveAssemblyReference.cache

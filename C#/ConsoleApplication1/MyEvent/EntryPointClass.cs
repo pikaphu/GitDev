@@ -26,11 +26,16 @@ namespace MyEvent
 
             tsw.SWHandler += new SwitchHandler(SimpleEvent_Engaged);
 
-            tsw.I_switcher = 1;
+            tsw.SWHandler2 += new SwitchHandler2(SimpleEvent_Engaged);
+
+            tsw.I_switcher = 2;
 
             Console.WriteLine("Switch {0} is {1}", tsw.I_switcher, tsw.B_isTurnOn);
+
+            
             Console.ReadKey();
         }
+
 
         /// <summary>
         /// test TestEvent from TestEvent.cs
@@ -47,7 +52,7 @@ namespace MyEvent
             // This is saying when the event fire, the method added to event are called too.
             // note that we cannot use =
             // is only += to add methods to event or -= do retire a event
-            testEv.Engaged += new MyHandler(SimpleEvent_Engaged);
+            testEv.Engaged += new MyHandler(SimpleTestEvent_Engaged);
 
             // make attention here...
             // when I assign true to this property, 
@@ -66,13 +71,17 @@ namespace MyEvent
         /// <param name="sender">
         ///     Event sender
         /// </param>
-        static void SimpleEvent_Engaged(TestEvent sender)
+        static void SimpleTestEvent_Engaged(TestEvent sender)
         {
             Console.WriteLine("The TestEvent {0} is running!", sender.Name);
         }
         static void SimpleEvent_Engaged()
         {
             Console.WriteLine("The SimpleEvent is Enagaged!");
+        }
+        static void SimpleEvent_Engaged(string str)
+        {
+            Console.WriteLine("The SimpleEvent {0} is Enagaged!", str);
         }
 
     }// end cls
