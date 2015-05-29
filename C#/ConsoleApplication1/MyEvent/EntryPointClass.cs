@@ -14,7 +14,21 @@ namespace MyEvent
     {
         static void Main(string[] a_strArgs)
         {
-            Call_TestSwitch();
+            
+
+            Console.ReadKey();
+        }
+
+        static void Call_TestOperator()
+        {
+            TestOperator topt0, topt1, topt2;
+            topt0 = new TestOperator(0,0);
+            topt1 = new TestOperator(1,1);
+            topt2 = new TestOperator(2,2);
+
+            topt0 = topt1 * topt2;
+
+           Console.WriteLine(topt0.D_testRange1 + " : " + topt0.D_testRange2 );
         }
 
         /// <summary>
@@ -35,8 +49,7 @@ namespace MyEvent
             
             Console.ReadKey();
         }
-
-
+        
         /// <summary>
         /// test TestEvent from TestEvent.cs
         /// </summary>
@@ -64,6 +77,8 @@ namespace MyEvent
 
             return;
         }
+
+        //------------------------------------
 
         /// <summary>
         ///     Event handler for the registered "engaged" event

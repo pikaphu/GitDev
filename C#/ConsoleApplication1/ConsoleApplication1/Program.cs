@@ -17,7 +17,11 @@ namespace ConsoleApplication1
             //    Console.WriteLine(item);
             //} 
 
-            TestFunc testF = new TestFunc();
+            //TestFunc testF = new TestFunc();
+
+            //A ref1 = new B(); ref1.Test();
+
+
 
             Console.WriteLine('\n' + "...");
             Console.ReadKey();
