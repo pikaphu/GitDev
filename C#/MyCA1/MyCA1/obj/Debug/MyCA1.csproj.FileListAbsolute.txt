@@ -1,6 +1,0 @@
-F:\GitDev\C-sharp\GitDev\C#\MyCA1\MyCA1\bin\Debug\MyCA1.exe.config
-F:\GitDev\C-sharp\GitDev\C#\MyCA1\MyCA1\bin\Debug\MyCA1.exe
-F:\GitDev\C-sharp\GitDev\C#\MyCA1\MyCA1\bin\Debug\MyCA1.pdb
-F:\GitDev\C-sharp\GitDev\C#\MyCA1\MyCA1\obj\Debug\MyCA1.csprojResolveAssemblyReference.cache
-F:\GitDev\C-sharp\GitDev\C#\MyCA1\MyCA1\obj\Debug\MyCA1.exe
-F:\GitDev\C-sharp\GitDev\C#\MyCA1\MyCA1\obj\Debug\MyCA1.pdb
