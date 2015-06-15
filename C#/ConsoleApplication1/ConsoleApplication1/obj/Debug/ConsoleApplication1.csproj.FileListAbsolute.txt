@@ -10,4 +10,8 @@ D:\CodeDev\C#\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplicati
 D:\CodeDev\C#\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
 D:\CodeDev\C#\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
 D:\CodeDev\C#\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+<<<<<<< HEAD
 D:\GitDev\C-sharp\GitDev\C#\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+=======
+F:\GitDev\C-sharp\GitDev\C#\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+>>>>>>> ebab29315e895cc83096dae030f63d2a7a88ac57
