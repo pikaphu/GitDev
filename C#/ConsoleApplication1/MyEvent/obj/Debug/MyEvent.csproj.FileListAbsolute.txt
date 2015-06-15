@@ -1,0 +1,6 @@
+D:\CodeDev\C#\ConsoleApplication1\MyEvent\bin\Debug\MyEvent.exe.config
+D:\CodeDev\C#\ConsoleApplication1\MyEvent\bin\Debug\MyEvent.exe
+D:\CodeDev\C#\ConsoleApplication1\MyEvent\bin\Debug\MyEvent.pdb
+D:\CodeDev\C#\ConsoleApplication1\MyEvent\obj\Debug\MyEvent.csprojResolveAssemblyReference.cache
+D:\CodeDev\C#\ConsoleApplication1\MyEvent\obj\Debug\MyEvent.exe
+D:\CodeDev\C#\ConsoleApplication1\MyEvent\obj\Debug\MyEvent.pdb

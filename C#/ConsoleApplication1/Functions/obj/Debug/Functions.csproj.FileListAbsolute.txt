@@ -1,0 +1,12 @@
+D:\Code Dev\C#\ConsoleApplication1\Functions\bin\Debug\Functions.exe.config
+D:\Code Dev\C#\ConsoleApplication1\Functions\bin\Debug\Functions.exe
+D:\Code Dev\C#\ConsoleApplication1\Functions\bin\Debug\Functions.pdb
+D:\Code Dev\C#\ConsoleApplication1\Functions\obj\Debug\Functions.exe
+D:\Code Dev\C#\ConsoleApplication1\Functions\obj\Debug\Functions.pdb
+D:\Code Dev\C#\ConsoleApplication1\Functions\obj\Debug\Functions.csprojResolveAssemblyReference.cache
+D:\CodeDev\C#\ConsoleApplication1\Functions\bin\Debug\Functions.exe.config
+D:\CodeDev\C#\ConsoleApplication1\Functions\bin\Debug\Functions.exe
+D:\CodeDev\C#\ConsoleApplication1\Functions\bin\Debug\Functions.pdb
+D:\CodeDev\C#\ConsoleApplication1\Functions\obj\Debug\Functions.csprojResolveAssemblyReference.cache
+D:\CodeDev\C#\ConsoleApplication1\Functions\obj\Debug\Functions.exe
+D:\CodeDev\C#\ConsoleApplication1\Functions\obj\Debug\Functions.pdb
