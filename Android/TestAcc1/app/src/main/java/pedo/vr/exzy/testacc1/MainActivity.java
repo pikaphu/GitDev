@@ -38,6 +38,9 @@ public class MainActivity  extends Activity implements SensorEventListener {
         senAccelerometer = senSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         senSensorManager.registerListener( this, senAccelerometer , SensorManager.SENSOR_DELAY_NORMAL);
 
+        // calculation method
+        methodSelected(null);
+
         // event listener
         // change Threshold
         // SHAKE_THRESHOLD = Integer.parseInt ( ((EditText)findViewById(R.id.edTh)).getText().toString() );
@@ -95,12 +98,13 @@ public class MainActivity  extends Activity implements SensorEventListener {
         if (!isFocus) return;
 
         if (mySensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-            float x = sensorEvent.values[0];
-            float y = sensorEvent.values[1];
-            float z = sensorEvent.values[2];
+            float x = sensorEvent.values[0]; // when using landscape just focus on X-axis (vertical)
+            float y = 0f; //sensorEvent.values[1]; ignore Y-axis (horizon)
+            float z = 0f; //sensorEvent.values[2];  ignore Z-axis (depth)
 
             long curTime = System.currentTimeMillis();
 
+            // fixed update every 0.1 sec
             if ((curTime - lastUpdate) > 100) {
                 long diffTime = (curTime - lastUpdate);
                 lastUpdate = curTime;
@@ -112,12 +116,20 @@ public class MainActivity  extends Activity implements SensorEventListener {
                 edSpd.setText(float2Str(speed));
                 Log.i("info", "Test: " + float2Str(speed) );
 
-                if (speed > SHAKE_THRESHOLD) {
-                    Log.d("debug", "Detected!");
-                    // getApplicationContext(), +  String.valueOf(x) + ":" +  String.valueOf(y) + ":" +  String.valueOf(z)
-                    Toast.makeText(this,
-                            "Shake Detected! ",
-                            Toast.LENGTH_SHORT).show();
+                // cal upon selected method
+                switch (calMethod)
+                {
+                    case speed:
+                        if (speed > SHAKE_THRESHOLD) {
+                            ShakeDetected();
+                        }
+                        break;
+
+                    case x_axis:
+                        if (Math.abs(x) >= 10.0f) {
+                            ShakeDetected();
+                        }
+                        break;
                 }
 
                 last_x = x;
@@ -125,14 +137,22 @@ public class MainActivity  extends Activity implements SensorEventListener {
                 last_z = z;
 
                 // show
-                EditText edX= (EditText)findViewById(R.id.editText1);
-                EditText edY= (EditText)findViewById(R.id.editText2);
-                EditText edZ= (EditText)findViewById(R.id.editText3);
+                TextView edX= (TextView)findViewById(R.id.textViewX);
+                TextView edY= (TextView)findViewById(R.id.textViewY);
+                TextView edZ= (TextView)findViewById(R.id.textViewZ);
                 edX.setText( float2Str(last_x));
                 edY.setText( float2Str(last_y));
                 edZ.setText( float2Str(last_z));
             }
         }
+    }
+    void ShakeDetected()
+    {
+        Log.d("debug", "Detected! " + calMethod);
+        // getApplicationContext(), +  String.valueOf(x) + ":" +  String.valueOf(y) + ":" +  String.valueOf(z)
+        Toast.makeText(this,
+                "Shake Detected! ",
+                Toast.LENGTH_SHORT).show();
     }
 
     /** Called when the user clicks the Send button */
@@ -145,6 +165,25 @@ public class MainActivity  extends Activity implements SensorEventListener {
         dialog.setContentView(R.layout.activity_acc);
         dialog.setTitle("AccActivity");
         dialog.setCancelable(true);
+    }
+
+    // method selection
+    enum CalMethod{
+        speed,
+        x_axis
+    }
+    CalMethod calMethod = CalMethod.speed; // default
+    public void methodSelected(View view){
+        String  mSel = "speed";
+        if (view != null)
+        {
+            mSel = view.getTag().toString(); // get by Tag in XML
+        }
+        calMethod = CalMethod.valueOf(mSel); //.values()[ (int)view.getTag()];
+        EditText edMethod = (EditText)findViewById(R.id.editText);
+        edMethod.setText(calMethod.name());
+
+        Log.i("method", "method selected: " + calMethod.toString());
     }
 
     String float2Str(float f)
