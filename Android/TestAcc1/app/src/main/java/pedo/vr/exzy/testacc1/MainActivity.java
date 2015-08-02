@@ -19,6 +19,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 
 public class MainActivity  extends Activity implements SensorEventListener {
 
@@ -26,12 +28,18 @@ public class MainActivity  extends Activity implements SensorEventListener {
     private Sensor senAccelerometer;
 
     private EditText ed_shake_threshold;
+    private TextView tv_step_count;
+    private Integer step_count = 0;
 
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // init step count
+        tv_step_count = (TextView) findViewById(R.id.textViewStepCount);
+        ResetStepCount(null);
 
         // sensor
         senSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -42,7 +50,6 @@ public class MainActivity  extends Activity implements SensorEventListener {
         methodSelected(null);
 
         // event listener
-        // change Threshold
         // SHAKE_THRESHOLD = Integer.parseInt ( ((EditText)findViewById(R.id.edTh)).getText().toString() );
         ed_shake_threshold = (EditText) findViewById(R.id.edTh);
         ed_shake_threshold.setText( String.valueOf(SHAKE_THRESHOLD) );
@@ -153,6 +160,18 @@ public class MainActivity  extends Activity implements SensorEventListener {
         Toast.makeText(this,
                 "Shake Detected! ",
                 Toast.LENGTH_SHORT).show();
+
+        ChangeStepCount(1);
+    }
+    public void ChangeStepCount(int stepVal)
+    {
+        step_count += stepVal;
+        tv_step_count.setText(step_count.toString());
+    }
+    public void ResetStepCount(View view)
+    {
+        step_count = 0;
+        tv_step_count.setText(step_count.toString());
     }
 
     /** Called when the user clicks the Send button */
