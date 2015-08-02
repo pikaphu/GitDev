@@ -1,2 +1,3 @@
-Hello Progr! V1.1
-- Add LINQ database project
+Update 02/08/2558
+- Add android-pedometer
+- Add TestAcc1
