@@ -37,31 +37,26 @@ public class MainActivity  extends Activity implements SensorEventListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // init step count
-        tv_step_count = (TextView) findViewById(R.id.textViewStepCount);
-        ResetStepCount(null);
-
-        // sensor
+        // init&regist sensor
         senSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         senAccelerometer = senSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         senSensorManager.registerListener( this, senAccelerometer , SensorManager.SENSOR_DELAY_NORMAL);
 
-        // calculation method
-        methodSelected(null);
+        // init step count
+        tv_step_count = (TextView) findViewById(R.id.textViewStepCount);
+        ResetStepCount(null);
 
-        // event listener
-        // SHAKE_THRESHOLD = Integer.parseInt ( ((EditText)findViewById(R.id.edTh)).getText().toString() );
+        // init SHAKE_THRESHOLD
         ed_shake_threshold = (EditText) findViewById(R.id.edTh);
         ed_shake_threshold.setText( String.valueOf(SHAKE_THRESHOLD) );
 
+        // Shake Event Listener
         ed_shake_threshold.addTextChangedListener(new TextWatcher() {
 
             public void afterTextChanged(Editable s) {
                 //SHAKE_THRESHOLD = Integer.parseInt(s.toString());
             }
-
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
             public void onTextChanged(CharSequence s, int start, int before, int count) {}
         });
 
@@ -90,6 +85,9 @@ public class MainActivity  extends Activity implements SensorEventListener {
             }
         });
 
+        // calculation method
+        methodSelected(null);
+
     }
 
 
@@ -106,8 +104,8 @@ public class MainActivity  extends Activity implements SensorEventListener {
 
         if (mySensor.getType() == Sensor.TYPE_ACCELEROMETER) {
             float x = sensorEvent.values[0]; // when using landscape just focus on X-axis (vertical)
-            float y = 0f; //sensorEvent.values[1]; ignore Y-axis (horizon)
-            float z = 0f; //sensorEvent.values[2];  ignore Z-axis (depth)
+            float y = sensorEvent.values[1]; // ignore Y-axis (horizon)
+            float z = sensorEvent.values[2]; // ignore Z-axis (depth)
 
             long curTime = System.currentTimeMillis();
 
@@ -116,7 +114,8 @@ public class MainActivity  extends Activity implements SensorEventListener {
                 long diffTime = (curTime - lastUpdate);
                 lastUpdate = curTime;
 
-                float speed = Math.abs(x + y + z - last_x - last_y - last_z)/ diffTime * 10000;
+                //float speed = Math.abs(x + y + z - last_x - last_y - last_z)/ diffTime * 10000; // full cal
+                float speed = Math.abs(x - last_x)/ diffTime * 10000; // focus on X-axis
 
                 // debug
                 EditText edSpd= (EditText)findViewById(R.id.editText4);
@@ -133,7 +132,17 @@ public class MainActivity  extends Activity implements SensorEventListener {
                         break;
 
                     case x_axis:
-                        if (Math.abs(x) >= 10.0f) {
+                        if (Math.abs(x) >= SHAKE_THRESHOLD) { // normal = 10.0f
+                            ShakeDetected();
+                        }
+                        break;
+                    case y_axis:
+                        if (Math.abs(y) >= SHAKE_THRESHOLD) { // normal = 10.0f
+                            ShakeDetected();
+                        }
+                        break;
+                    case z_axis:
+                        if (Math.abs(z) >= SHAKE_THRESHOLD) { // normal = 10.0f
                             ShakeDetected();
                         }
                         break;
@@ -186,21 +195,38 @@ public class MainActivity  extends Activity implements SensorEventListener {
         dialog.setCancelable(true);
     }
 
-    // method selection
+    // method selection : 0 - 3
     enum CalMethod{
         speed,
-        x_axis
+        x_axis,
+        y_axis,
+        z_axis
     }
     CalMethod calMethod = CalMethod.speed; // default
     public void methodSelected(View view){
+
+        // set new method
         String  mSel = "speed";
         if (view != null)
         {
-            mSel = view.getTag().toString(); // get by Tag in XML
+            mSel = view.getTag().toString(); // get by Tag via XML
         }
         calMethod = CalMethod.valueOf(mSel); //.values()[ (int)view.getTag()];
         EditText edMethod = (EditText)findViewById(R.id.editText);
         edMethod.setText(calMethod.name());
+
+        // re init SHAKE_THRESHOLD
+        switch (calMethod) {
+            case speed:
+                SHAKE_THRESHOLD = 400;
+                break;
+            case x_axis:
+            case y_axis:
+            case z_axis:
+                if (SHAKE_THRESHOLD >= 100) SHAKE_THRESHOLD = 10;
+                break;
+        }
+        ed_shake_threshold.setText( String.valueOf(SHAKE_THRESHOLD));
 
         Log.i("method", "method selected: " + calMethod.toString());
     }
